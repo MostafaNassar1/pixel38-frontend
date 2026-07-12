@@ -1,9 +1,41 @@
 import Image from "next/image";
-import { getProducts } from "../../lib/api";
 
-export default async function WoodTypes() {
-  const products = await getProducts();
+type WoodType = {
+  name: string;
+  image: string;
+  traits: { label: string; positive: boolean }[];
+};
 
+const WOOD_TYPES: WoodType[] = [
+  {
+    name: "Oak",
+    image: "/wood/oak.jpg",
+    traits: [
+      { label: "Durability", positive: true },
+      { label: "Beautiful texture", positive: true },
+      { label: "Water resistance", positive: true },
+      { label: "Expensive", positive: false },
+    ],
+  },
+  {
+    name: "Buk",
+    image: "/wood/buk.jpg",
+    traits: [
+      { label: "Durability", positive: true },
+      { label: "Hard to handle", positive: false },
+    ],
+  },
+  {
+    name: "Ash",
+    image: "/wood/ash.jpg",
+    traits: [
+      { label: "Durability", positive: true },
+      { label: "Hard to handle", positive: false },
+    ],
+  },
+];
+
+export default function WoodTypes() {
   return (
     <section className="px-4 md:px-8 mt-20">
       <h2 className="font-display text-3xl md:text-4xl font-bold uppercase tracking-wide text-foreground max-w-md">
@@ -11,24 +43,16 @@ export default async function WoodTypes() {
       </h2>
 
       <div className="mt-10 flex gap-8 overflow-x-auto md:overflow-visible md:grid md:grid-cols-3 pb-4 md:pb-0">
-        {products.map((product) => (
-          <div key={product.id} className="shrink-0 w-40 md:w-auto">
+        {WOOD_TYPES.map((wood) => (
+          <div key={wood.name} className="shrink-0 w-40 md:w-auto">
             <div className="relative w-28 h-28 md:w-36 md:h-36 rounded-2xl overflow-hidden">
-              {product.images[0] && (
-                <Image
-                  src={`http://localhost:3000${product.images[0].imageUrl}`}
-                  alt={product.name}
-                  fill
-                  sizes="(max-width: 768px) 112px, 144px"
-                  className="object-cover"
-                />
-              )}
+              <Image src={wood.image} alt={wood.name} fill sizes="144px" className="object-cover" />
             </div>
 
-            <h3 className="mt-4 font-semibold text-lg text-foreground">{product.name}</h3>
+            <h3 className="mt-4 font-semibold text-lg text-foreground">{wood.name}</h3>
 
             <ul className="mt-2 space-y-1">
-              {product.traits?.map((trait) => (
+              {wood.traits.map((trait) => (
                 <li key={trait.label} className="flex items-start gap-2 text-sm text-muted">
                   {trait.positive ? <CheckIcon /> : <CrossIcon />}
                   <span>{trait.label}</span>
