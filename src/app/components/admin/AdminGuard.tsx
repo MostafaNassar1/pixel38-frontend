@@ -22,7 +22,7 @@ export default function AdminGuard({ children }: { children: React.ReactNode }) 
   }
 
   if (!accessToken && !isLoginPage) {
-    return null; // redirecting, render nothing
+    return null; 
   }
 
   return <>{children}</>;

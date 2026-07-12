@@ -55,7 +55,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       headers: { Authorization: `Bearer ${accessToken}` },
     });
   } catch {
-    // ignore network errors on logout — clear local state regardless
+    
   }
   setAccessToken(null);
   setUser(null);

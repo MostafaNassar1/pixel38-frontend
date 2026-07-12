@@ -70,7 +70,7 @@ export default function ProductForm({ product, onClose, onSaved }: Props) {
         );
         setImages([...images, newImage]);
       } else {
-        // Create mode: no product id yet, just track locally until Save is clicked
+        
         setImages([...images, { id: `temp-${Date.now()}`, imageUrl: url, order: images.length }]);
       }
     } catch {
