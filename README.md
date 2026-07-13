@@ -103,8 +103,8 @@ Access tokens are held in React state (in-memory), not `localStorage`, which is 
 
 ## 4. AI Tools Used
 
-**Claude** 
-**Copilot** 
+-**Claude**
+-**Copilot** 
 
 ## 5. Time Spent
 
