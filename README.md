@@ -57,6 +57,7 @@ The site runs at `http://localhost:3001` (port set explicitly to avoid colliding
 | `/admin/services` | Services CRUD (protected) |
 | `/admin/products` | Products CRUD + image upload/management (protected) |
 | `/admin/homepage` | Homepage content editor (protected) |
+| Any unmatched route | Custom 404 page (app/not-found.tsx) — automatically rendered by Next.js for any URL that doesn't match a real page, styled to match the Figma 404 design |
 
 ---
 
